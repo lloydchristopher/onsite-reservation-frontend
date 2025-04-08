@@ -16,7 +16,7 @@ const Profile = () => {
 		const fetchProfileData = async () => {
 			try {
 				const response = await api.get("/api/auth/me");
-				setProfile(response.data);
+				setProfile(response.data.data);
 			} catch (err) {
 				setError("Failed to fetch profile data");
 				console.error(err);
@@ -49,23 +49,28 @@ const Profile = () => {
 	return (
 		<Container>
 			<h1 className="mb-4">Profile</h1>
-
+			{console.log(profile)}
 			<Card className="mb-4">
 				<Card.Body>
 					<div className="d-flex flex-column flex-md-row align-items-center align-items-md-start gap-3 mb-4">
 						<div className="profile-avatar">
-							{user?.name?.charAt(0) || (
+							{profile?.username?.charAt(0).toUpperCase() || (
 								<i className="bi bi-person"></i>
 							)}
 						</div>
 
 						<div>
-							<h4>{profile?.name || user?.name || "User"}</h4>
+							<h4>
+								{profile?.username ||
+									user?.data.username ||
+									"User"}
+							</h4>
 							<p className="text-muted mb-1">
 								{profile?.email || "email@example.com"}
 							</p>
 							<p className="text-muted">
-								{profile?.role || user?.role || "Role"}
+								{user?.data.role?.replace("ROLE_", "") ||
+									"Role"}
 							</p>
 						</div>
 					</div>
@@ -77,7 +82,10 @@ const Profile = () => {
 					<Row>
 						<Col md={6} className="mb-3">
 							<p className="text-muted mb-1">Full Name</p>
-							<p>{profile?.name || "Not provided"}</p>
+							<p>
+								{profile?.firstName + " " + profile?.lastName ||
+									"Not provided"}
+							</p>
 						</Col>
 
 						<Col md={6} className="mb-3">
@@ -86,13 +94,13 @@ const Profile = () => {
 						</Col>
 
 						<Col md={6} className="mb-3">
-							<p className="text-muted mb-1">Phone</p>
-							<p>{profile?.phone || "Not provided"}</p>
+							<p className="text-muted mb-1">Assigned Desk</p>
+							<p>{profile?.deskId || "Not assigned"}</p>
 						</Col>
 
 						<Col md={6} className="mb-3">
 							<p className="text-muted mb-1">Department</p>
-							<p>{profile?.department || "Not provided"}</p>
+							<p>{profile?.departmentName || "Not provided"}</p>
 						</Col>
 					</Row>
 				</Card.Body>

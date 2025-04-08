@@ -41,7 +41,7 @@ const Navbar = ({ toggleSidebar }) => {
 						>
 							<div className="user-info me-2 d-none d-md-block text-end">
 								<div className="fw-bold">
-									{user?.data.username || "User"}
+									{user?.data.firstName || "User"}
 								</div>
 								<div className="small text-muted">
 									{user?.data.role?.replace("ROLE_", "") ||

@@ -13,7 +13,7 @@ const Dashboard = () => {
 		const fetchDashboardData = async () => {
 			try {
 				const response = await api.get("/api/desks");
-				setData(response.data);
+				setData(response.data.data);
 			} catch (err) {
 				setError("Failed to fetch dashboard data");
 				console.error(err);
@@ -48,35 +48,119 @@ const Dashboard = () => {
 			<h1 className="mb-4">Dashboard</h1>
 
 			<Row>
-				<Col md={4} className="mb-4">
+				<Col md={12} className="mb-4">
 					<Card>
+						<Card.Header>Section A - Coffee</Card.Header>
 						<Card.Body>
-							<Card.Title>Summary</Card.Title>
-							<Card.Text className="text-muted">
-								Dashboard content will appear here.
-							</Card.Text>
+							<Row>
+								{data
+									.filter((item) => item.section === "Coffee")
+									.sort((a, b) => {
+										const numA = Number(
+											a.deskId.match(/\d+/)[0]
+										);
+										const numB = Number(
+											b.deskId.match(/\d+/)[0]
+										);
+										return numA - numB;
+									})
+									.map((item, index) => (
+										<Col
+											md={3}
+											className="mb-4"
+											key={index}
+										>
+											<Card
+												className={
+													item.occupied === true
+														? "bg-success text-white"
+														: ""
+												}
+											>
+												<Card.Header>
+													{item.deskId}
+												</Card.Header>
+												<Card.Body>
+													<Card.Title></Card.Title>
+												</Card.Body>
+											</Card>
+										</Col>
+									))}
+							</Row>
 						</Card.Body>
 					</Card>
 				</Col>
 
-				<Col md={4} className="mb-4">
+				<Col md={12} className="mb-4">
 					<Card>
+						<Card.Header>Section B - Tea</Card.Header>
 						<Card.Body>
-							<Card.Title>Recent Activity</Card.Title>
-							<Card.Text className="text-muted">
-								Your recent activities will appear here.
-							</Card.Text>
+							<Row>
+								{data
+									.filter((item) => item.section === "Tea")
+									.sort((a, b) => {
+										const numA = Number(
+											a.deskId.match(/\d+/)[0]
+										);
+										const numB = Number(
+											b.deskId.match(/\d+/)[0]
+										);
+										return numA - numB;
+									})
+									.map((item, index) => (
+										<Col
+											md={3}
+											className="mb-4"
+											key={index}
+										>
+											<Card>
+												<Card.Header>
+													{item.deskId}
+												</Card.Header>
+												<Card.Body>
+													<Card.Title></Card.Title>
+												</Card.Body>
+											</Card>
+										</Col>
+									))}
+							</Row>
 						</Card.Body>
 					</Card>
 				</Col>
 
-				<Col md={4} className="mb-4">
+				<Col md={12} className="mb-4">
 					<Card>
+						<Card.Header>Section C - Soda</Card.Header>
 						<Card.Body>
-							<Card.Title>Statistics</Card.Title>
-							<Card.Text className="text-muted">
-								Your statistics will appear here.
-							</Card.Text>
+							<Row>
+								{data
+									.filter((item) => item.section === "Soda")
+									.sort((a, b) => {
+										const numA = Number(
+											a.deskId.match(/\d+/)[0]
+										);
+										const numB = Number(
+											b.deskId.match(/\d+/)[0]
+										);
+										return numA - numB;
+									})
+									.map((item, index) => (
+										<Col
+											md={3}
+											className="mb-4"
+											key={index}
+										>
+											<Card>
+												<Card.Header>
+													{item.deskId}
+												</Card.Header>
+												<Card.Body>
+													<Card.Title></Card.Title>
+												</Card.Body>
+											</Card>
+										</Col>
+									))}
+							</Row>
 						</Card.Body>
 					</Card>
 				</Col>
