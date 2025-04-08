@@ -1,0 +1,150 @@
+/* ===== GENERAL STYLES ===== */
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: #f8f9fa;
+}
+
+/* Make sure icons are properly displayed */
+.bi {
+	display: inline-block;
+	vertical-align: -0.125em;
+}
+
+/* ===== LAYOUT STYLES ===== */
+.layout-container {
+	display: flex;
+}
+
+.content-wrapper {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.main-content {
+	padding: 1rem;
+	flex-grow: 1;
+	margin-top: 56px; /* Match navbar height */
+}
+
+/* Sidebar expanded state for desktop */
+@media (min-width: 768px) {
+	.sidebar-expanded {
+		margin-left: 250px; /* Match sidebar width */
+	}
+}
+
+/* ===== NAVBAR STYLES ===== */
+.app-navbar {
+	height: 56px;
+	background-color: #fff;
+}
+
+.navbar-toggle-btn {
+	margin-right: 0.5rem;
+}
+
+.user-dropdown {
+	padding: 0.25rem 0.5rem;
+}
+
+.user-info {
+	text-align: right;
+}
+
+.user-avatar {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background-color: #6c757d;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* ===== SIDEBAR STYLES ===== */
+.app-sidebar {
+	width: 250px;
+	height: 100vh;
+	position: fixed;
+	left: -250px; /* Hidden by default */
+	top: 0;
+	background-color: #343a40;
+	color: white;
+	transition: left 0.3s ease;
+	overflow-y: auto;
+	z-index: 1030;
+}
+
+.app-sidebar.show {
+	left: 0;
+}
+
+.sidebar-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 56px; /* Match navbar height */
+	border-bottom: 1px solid #495057;
+}
+
+.sidebar-title {
+	display: flex;
+	align-items: center;
+	padding-left: 1rem;
+}
+
+.sidebar-toggle,
+.sidebar-close {
+	color: white;
+	padding: 0;
+}
+
+.sidebar-close {
+	padding-right: 1rem;
+}
+
+.sidebar-nav {
+	margin-top: 1rem;
+	flex-direction: column;
+}
+
+.sidebar-nav .nav-link {
+	color: rgba(255, 255, 255, 0.75);
+	border-radius: 0.25rem;
+	margin: 0.2rem 0.5rem;
+	padding: 0.5rem 1rem;
+}
+
+.sidebar-nav .nav-link:hover {
+	color: #fff;
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-nav .nav-link.active {
+	color: #fff;
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1020;
+}
+
+/* Media queries for responsive behavior */
+@media (min-width: 768px) {
+	.app-sidebar {
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
+}

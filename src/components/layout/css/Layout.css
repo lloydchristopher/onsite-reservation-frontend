@@ -1,0 +1,23 @@
+/* Layout component styles */
+.layout-container {
+	display: flex;
+}
+
+.content-wrapper {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.main-content {
+	padding: 1rem;
+	flex-grow: 1;
+	margin-top: 56px; /* Match navbar height */
+}
+
+/* Sidebar expanded state for desktop */
+@media (min-width: 768px) {
+	.sidebar-expanded {
+		margin-left: 250px; /* Match sidebar width */
+	}
+}

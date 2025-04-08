@@ -1,0 +1,80 @@
+/* Sidebar component styles */
+.app-sidebar {
+	width: 250px;
+	height: 100vh;
+	position: fixed;
+	left: -250px; /* Hidden by default */
+	top: 0;
+	background-color: #343a40;
+	color: white;
+	transition: left 0.3s ease;
+	overflow-y: auto;
+	z-index: 1030;
+}
+
+.app-sidebar.show {
+	left: 0;
+}
+
+.sidebar-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 56px; /* Match navbar height */
+	border-bottom: 1px solid #495057;
+}
+
+.sidebar-title {
+	display: flex;
+	align-items: center;
+	padding-left: 1rem;
+}
+
+.sidebar-toggle,
+.sidebar-close {
+	color: white;
+	padding: 0;
+}
+
+.sidebar-close {
+	padding-right: 1rem;
+}
+
+.sidebar-nav {
+	margin-top: 1rem;
+	flex-direction: column;
+}
+
+.sidebar-nav .nav-link {
+	color: rgba(255, 255, 255, 0.75);
+	border-radius: 0.25rem;
+	margin: 0.2rem 0.5rem;
+	padding: 0.5rem 1rem;
+}
+
+.sidebar-nav .nav-link:hover {
+	color: #fff;
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-nav .nav-link.active {
+	color: #fff;
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1020;
+}
+
+/* Media queries for responsive behavior */
+@media (min-width: 768px) {
+	.app-sidebar {
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
+}
